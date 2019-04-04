@@ -1,0 +1,58 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="lista-element">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>[[titulo]]!</h2>
+    <template is="dom-repeat" items="{{itemms}}" as="lista">
+          <ul>
+            <li>[[lista.Nombre]]
+              <p>[[lista.Descripcion]]</p>
+            </li>
+          </ul>
+        </template>
+    </template>
+
+  <script>
+    /**
+     * `lista-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ListaElement extends Polymer.Element {
+      static get is() { return 'lista-element'; }
+      static get properties() {
+        return {
+          titulo: {
+            type: String,
+            value: 'Soy titulo'
+          },
+          itemms:{
+            type: Array,
+            value(){
+                  return[
+                    {
+                        Nombre: 'ELemento 1',
+                        Descripcion: 'Bolsa'
+                    },
+                    {
+                        Nombre: 'Elemento 2',
+                        Descripcion: 'Cartera'
+                    }
+                  ];
+              }
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ListaElement.is, ListaElement);
+  </script>
+</dom-module>
